@@ -366,6 +366,7 @@ export class LdapDirectoryService implements IDirectoryService {
       // We need to expressly tell ldapts what attributes to return as Buffer objects,
       // otherwise they are returned as strings
       explicitBufferAttributes: [ActiveDirectoryExternalId],
+      timeLimit: 0,
     };
     const { searchEntries } = await this.client.search(path, options, controls);
     return searchEntries.map((e) => processEntry(e)).filter((e) => e != null);
